@@ -12,5 +12,5 @@ jobs:
       - uses: michaelpeterswa/rust-wasm-pack-action@v1.0.0
         env:
           WASM_PACK_TARGET: web
-          WASM_PACK_IN_DIR: ../
+          WASM_PACK_IN_DIR: .
           WASM_PACK_OUT_DIR: frontend/pkg
