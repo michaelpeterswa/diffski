@@ -16,7 +16,7 @@ pub fn diff(a: &str, b: &str) -> String {
         diffs.push(format!("{}{}", sign, change));
     }
 
-    return diffs.join("");
+    diffs.join("")
 }
 
 #[cfg(test)]
