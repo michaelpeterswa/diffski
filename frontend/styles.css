@@ -1,9 +1,5 @@
 /* comment's yo */
 
-.font {
-    font-family: 'Readex Pro', sans-serif;
-}
-
-.bullet {
-    list-style-type: disc;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

@@ -1,0 +1,27 @@
+{
+  "name": "diffski",
+  "version": "1.0.0",
+  "description": "A completely in-browser diff-checker.",
+  "main": "index.html",
+  "scripts": {
+    "dev": "wasm-pack build ../ --release --target web --out-dir frontend/pkg && npm run build && live-server . --port=8080",
+    "build": "postcss styles.css -o compiled-styles.css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michaelpeterswa/diffski.git"
+  },
+  "author": "Michael Peters",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/michaelpeterswa/diffski/issues"
+  },
+  "homepage": "https://github.com/michaelpeterswa/diffski#readme",
+  "dependencies": {
+    "autoprefixer": "^10.4.8",
+    "daisyui": "^2.20.0",
+    "postcss-cli": "^10.0.0",
+    "tailwindcss": "^3.1.7"
+  }
+}
