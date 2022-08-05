@@ -5,7 +5,7 @@
   "main": "index.html",
   "scripts": {
     "dev": "wasm-pack build ../ --release --target web --out-dir frontend/build && npm run build && live-server . --port=8080",
-    "build": "sudo cp index.html build/ && sudo cp styles.css build/ && sudo postcss styles.css -o build/compiled-styles.css",
+    "build": "sudo cp index.html build/ && sudo cp styles.css build/ && postcss styles.css -o build/compiled-styles.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
