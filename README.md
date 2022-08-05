@@ -1,2 +1,2 @@
-# rust-wasm-start
-A starter repository for building WASM binaries from Rust
+# diffski
+A Rust and WebAssembly diff-tool
