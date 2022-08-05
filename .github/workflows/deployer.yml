@@ -14,7 +14,7 @@ jobs:
           WASM_PACK_TARGET: web
           WASM_PACK_IN_DIR: .
           WASM_PACK_OUT_DIR: frontend/build
-      
+
       - uses: actions/setup-node@v3
       - run: npm ci
         working-directory: frontend
