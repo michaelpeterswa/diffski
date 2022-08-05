@@ -16,10 +16,12 @@ jobs:
           WASM_PACK_OUT_DIR: frontend/build
 
       - uses: actions/setup-node@v3
-      - run: sudo npm ci --save-dev
-        working-directory: frontend
-      - run: npm run build
-        working-directory: frontend
+        with:
+          node-version: "16.x"
+          script: |
+            npm ci
+            npm run build
+          working-directory: frontend
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
