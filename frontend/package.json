@@ -4,8 +4,8 @@
   "description": "A completely in-browser diff-checker.",
   "main": "index.html",
   "scripts": {
-    "dev": "wasm-pack build ../ --release --target web --out-dir frontend/build && npm run build && live-server . --port=8080",
-    "build": "postcss styles.css -o build/compiled-styles.css",
+    "dev": "wasm-pack build ../ --release --target web --out-dir frontend/build && npm run build && live-server ./build --port=8080",
+    "build": "cp index.html build/ && postcss styles.css -o build/compiled-styles.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

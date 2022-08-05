@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>diffski</title>
+    <title>diff.ski</title>
     <meta name="description" content="rust-wasm-start">
     <meta name="author" content="michaelpeterswa">
 
@@ -21,10 +21,10 @@
       <div class="navbar-start">
       </div>
       <div class="navbar-center">
-        <a class="btn btn-ghost normal-case text-xl text-gravel font-mono" href="https://github.com/michaelpeterswa/diffski">diffski.</a>
+        <a class="btn btn-ghost normal-case text-xl text-gravel font-mono" href="https://github.com/michaelpeterswa/diffski">diff.ski</a>
       </div>
       <div class="navbar-end">
-  
+        <label for="my-modal-4" class="btn btn-ghost normal-case text-sm text-gravel font-mono">about</label>
       </div>
     </div>
     <div class="flex w-full h-1/2 p-10">
@@ -42,8 +42,16 @@
     <div class="flex w-full h-1/3 p-10">
       <textarea class="flex-grow textarea resize-none disabled:bg-jade disabled:text-gravel leading-4 border-0 font-mono" placeholder="diff" id="diff" disabled spellcheck="false"></textarea>
     </div>
-
   </div>
+  <input type="checkbox" id="my-modal-4" class="modal-toggle" />
+    <label for="my-modal-4" class="modal cursor-pointer">
+      <label class="modal-box relative bg-field" for="">
+        <h3 class="text-lg font-bold text-gravel">diff.ski</h3>
+        <p class="py-4">
+          this is a completely in-browser diff tool that is built on Rust and WebAssembly. many thanks to the diffing library <a class="link" href="https://github.com/mitsuhiko/similar">similar</a> for the algorithms. s/o to <a class="link" href="https://github.com/cnewell0">cnewell0</a> for the inspiration.
+        </p>
+      </label>
+    </label>
   </body>
   <script type="module">
     import init, {diff} from "./rust_wasm_start.js";
@@ -57,9 +65,7 @@
 
           var output = document.getElementById('diff');
           output.textContent = diff(text1, text2);
-        });
-
-        
+        });    
       });
   </script>
 </html>
