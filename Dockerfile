@@ -21,7 +21,7 @@ RUN wasm-pack build --release --target web
 
 FROM httpd:2.4 as web-server
 
-COPY --from=rust-build build/pkg /usr/local/apache2/htdocs/pkg
+COPY --from=rust-build build/pkg /usr/local/apache2/htdocs/build
 COPY ./frontend/ /usr/local/apache2/htdocs/
 
 RUN echo "AddType application/wasm .wasm" >> /usr/local/apache2/conf/httpd.conf

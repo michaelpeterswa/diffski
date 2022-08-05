@@ -13,4 +13,17 @@ jobs:
         env:
           WASM_PACK_TARGET: web
           WASM_PACK_IN_DIR: .
-          WASM_PACK_OUT_DIR: frontend/pkg
+          WASM_PACK_OUT_DIR: frontend/build
+      
+      - uses: actions/setup-node@v3
+      - run: npm ci
+        working-directory: frontend
+      - run: npm run build
+        working-directory: frontend
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/main'
+        with:
+          github_token: ${{ secrets.ACCESS_TOKEN }}
+          publish_dir: ./frontend/build
