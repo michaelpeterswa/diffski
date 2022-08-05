@@ -34,7 +34,11 @@ jobs:
         with:
           node-version: "16.x"
       - run: |
+          mkdir ~/.npm-global
+          npm config set prefix '~/.npm-global'
+          export PATH=~/.npm-global/bin:$PATH
           npm ci
+          npm install -g postcss-cli autoprefixer
           postcss styles.css -o compiled-styles.css
           sudo cp index.html build/index.html
           sudo cp styles.css build/styles.css
