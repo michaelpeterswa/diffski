@@ -16,7 +16,7 @@ jobs:
           WASM_PACK_OUT_DIR: frontend/build
 
       - uses: actions/setup-node@v3
-      - run: sudo npm ci
+      - run: sudo npm ci --save-dev
         working-directory: frontend
       - run: npm run build
         working-directory: frontend
