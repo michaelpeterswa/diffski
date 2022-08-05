@@ -35,7 +35,10 @@ jobs:
           node-version: "16.x"
       - run: |
           npm ci
-          npm run build
+          postcss styles.css -o compiled-styles.css
+          sudo cp index.html build/index.html
+          sudo cp styles.css build/styles.css
+          sudo cp compiled-styles.css build/compiled-styles.css
         working-directory: frontend
       - name: Setup Pages
         uses: actions/configure-pages@v1
