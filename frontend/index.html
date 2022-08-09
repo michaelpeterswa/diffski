@@ -16,7 +16,7 @@
   </head>
 
   <body>
-    <div class="h-screen bg-seafoam">
+    <div class="h-screen bg-seafoam overflow-hidden">
     <div class="navbar bg-forest">
       <div class="navbar-start">
       </div>
@@ -24,10 +24,10 @@
         <a class="btn btn-ghost normal-case text-xl text-gravel font-mono" href="https://github.com/michaelpeterswa/diffski">diff.ski</a>
       </div>
       <div class="navbar-end">
-        <label for="my-modal-4" class="btn btn-ghost normal-case text-sm text-gravel font-mono">about</label>
+        <label for="my-modal-4" id="about" class="btn btn-ghost normal-case text-sm text-gravel font-mono">about</label>
       </div>
     </div>
-    <div class="flex w-full h-1/2 p-10">
+    <div class="flex w-full h-2/5 px-8 pt-10 pb-5">
       <textarea class="flex-grow textarea textarea-bordered resize-none bg-jade text-gravel leading-4 font-mono" placeholder="text 1" id="text1" spellcheck="false"></textarea>
       <div class="divider divider-horizontal text-field font-mono">AND</div>
       <textarea class="flex-grow textarea textarea-bordered resize-none bg-jade text-gravel leading-4 font-mono" placeholder="text 2" id="text2" spellcheck="false"></textarea>
@@ -39,11 +39,12 @@
       </button>
       </div>
     </div>
-    <div class="flex w-full h-1/3 p-10">
-      <div class="flex-grow textarea resize-none bg-jade text-gravel leading-4 border-0 font-mono overflow-scroll whitespace-pre" placeholder="diff" id="diff"></div>
+      <div class="flex w-full h-1/2 px-8 pb-10 pt-5">
+        <div class="flex-grow textarea resize-none bg-jade text-gravel leading-4 border-0 font-mono overflow-scroll whitespace-pre" placeholder="diff" id="diff">
+      </div>
     </div>
   </div>
-  <input type="checkbox" id="my-modal-4" class="modal-toggle" />
+  <input type="checkbox" id="my-modal-4" class="modal-toggle"/>
     <label for="my-modal-4" class="modal cursor-pointer">
       <label class="modal-box relative bg-field" for="">
         <h3 class="text-lg font-bold text-gravel">diff.ski</h3>
@@ -53,8 +54,25 @@
       </label>
     </label>
   </body>
+  <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+  <script type="module">
+    const jsConfetti = new JSConfetti()
+
+    document.getElementById("about").addEventListener("click", onAbout, false)
+
+    function onAbout() {
+      jsConfetti.addConfetti({
+        emojis: ['🤑', '🦀', '💥', '💎', '🚀'],
+      })
+    }
+  </script>
   <script type="module">
     import init, {diff} from "./rust_wasm_start.js";
+
+    function htmlEntities(str) {
+      return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
     init()
       .then(() => {
         const diffButton = document.getElementById("differ");
@@ -71,11 +89,11 @@
          
           output.innerHTML = diffs_json.diff.map(diff => { 
             if (diff.startsWith('+')) {
-              return `<div class="text-seafoam">${diff}</div>`;
+              return `<div class="text-seafoam">${htmlEntities(diff)}</div>`;
             } else if (diff.startsWith('-')) {
-              return `<div class="text-dullred">${diff}</div>`;
+              return `<div class="text-dullred">${htmlEntities(diff)}</div>`;
             } else {
-              return `<div class="text-gravel">${diff}</div>`;
+              return `<div class="text-gravel">${htmlEntities(diff)}</div>`;
             }
           }
           ).join('');
