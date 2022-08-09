@@ -8,6 +8,7 @@ module.exports = {
       forest: "#28403B",
       field: "#36594C",
       gravel: "#D9D9D9",
+      dullred: "#AC4D54",
     },
     extend: {},
   },
