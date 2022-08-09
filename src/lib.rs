@@ -24,7 +24,7 @@ pub fn diff(a: &str, b: &str) -> String {
 
     let diff_data = DiffData { diff: diffs };
 
-    return serde_json::to_string(&diff_data).unwrap();
+    serde_json::to_string(&diff_data).unwrap()
 }
 
 #[cfg(test)]
@@ -34,7 +34,10 @@ mod tests {
     #[test]
     fn test_diff_mismatch() {
         let result = diff("hello\ngoodbye", "hello\nworld");
-        assert_eq!(result, "{\"diff\":[\" hello\\n\",\"-goodbye\\n\",\"+world\\n\"]}");
+        assert_eq!(
+            result,
+            "{\"diff\":[\" hello\\n\",\"-goodbye\\n\",\"+world\\n\"]}"
+        );
     }
 
     #[test]
